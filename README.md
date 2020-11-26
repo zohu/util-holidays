@@ -11,11 +11,11 @@
 
 ```bash
 # 安装
-npm i chinese-holidays
-# 或者 yarn add chinese-holidays
+npm i util-holidays
+# 或者 yarn add util-holidays
 ```
 ```javascript
-import { getDayInfo, isWorkingDay, isWeekend, isStatutoryHoliday } from 'chinese-holidays'
+import { getDayInfo, isWorkingDay, isWeekend, isStatutoryHoliday } from 'util-holidays'
 ```
 ```javascript
 // 获取日期信息

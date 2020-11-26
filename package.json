@@ -1,5 +1,5 @@
 {
-  "name": "chinese-holiday",
+  "name": "util-holidays",
   "version": "1.0.0",
   "description": "A Chinese holiday util",
   "main": "lib/index.js",
@@ -10,7 +10,8 @@
   },
   "keywords": [
     "chinese",
-    "holiday"
+    "holidays",
+    "util"
   ],
   "author": "oak",
   "license": "MIT",
