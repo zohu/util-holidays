@@ -1,7 +1,7 @@
 # 法定节假日查询（中国，定期维护）
 ![](https://img.shields.io/badge/Language-TypeScript-orange.svg)
-[![Build Status](https://travis-ci.com/oak-c/chinese-holidays.svg?branch=main)](https://travis-ci.com/oak-c/chinese-holidays)
-[![Coverage Status](https://coveralls.io/repos/github/oak-c/chinese-holidays/badge.svg)](https://coveralls.io/github/oak-c/chinese-holidays)
+[![Build Status](https://travis-ci.com/oak-c/util-holidays.svg?branch=main)](https://travis-ci.com/oak-c/util-holidays)
+[![Coverage Status](https://coveralls.io/repos/github/oak-c/util-holidays/badge.svg)](https://coveralls.io/github/oak-c/util-holidays)
 
 ### 使用方法
 1. 支持离线、在线两种模式；
