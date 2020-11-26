@@ -15,6 +15,7 @@
   "author": "oak",
   "license": "MIT",
   "scripts": {
+    "dev":"npm run build && node lib/index.js && exit 0",
     "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\"",
     "test": "jest --config jestconfig.json",

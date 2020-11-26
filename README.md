@@ -12,7 +12,27 @@ npm i chinese-holidays
 # 或者 yarn add chinese-holidays
 ```
 ```javascript
-import chineseHoliday from 'chinese-holidays'
+import { getDayInfo, isWorkingDay, isWeekend, isStatutoryHoliday } from 'chinese-holidays'
+```
+```javascript
+// 获取日期信息
+getDayInfo('2020-10-01')
+// 范围值：
+{
+    date: '2020-10-01',
+    week: '星期四',
+    type: '国庆节',
+    dayType: 3,
+    ps: 'dayType：1-工作日；2-周末；3-法定节假日；4-补休调工日'
+}
+```
+```javascript
+// 判断是否工作日（含法定调工，如2020年10月10日）
+isWorkingDay('2020-10-10')
+// 判断是否正常休息的周末（不含法定调工，如2020年10月10日）
+isWeekend('2020-10-10')
+// 判断是否法定节假日
+isStatutoryHoliday('2020-10-01')
 ```
 
 ### 其他说明
