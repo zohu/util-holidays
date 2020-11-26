@@ -3,6 +3,6 @@
   "version": "1.0.0",
   "main": "index.js",
   "repository": "git@github.com:oak-c/chinese-holidays.git",
-  "author": "oak <38601989@qq.com>",
+  "author": "oak",
   "license": "MIT"
 }
