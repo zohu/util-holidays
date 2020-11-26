@@ -1,7 +1,7 @@
 {
-  "name": "chinese-holidays",
+  "name": "chinese-holiday",
   "version": "1.0.0",
-  "description": "A Chinese holidays util",
+  "description": "A Chinese holiday util",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "repository": {
