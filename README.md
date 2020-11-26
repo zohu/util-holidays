@@ -1,4 +1,4 @@
-# 法定节假日查询（中国）
+# 法定节假日查询（中国，定期维护）
 ![](https://img.shields.io/badge/Language-TypeScript-orange.svg)
 
 ### 使用方法
