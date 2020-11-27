@@ -1,6 +1,6 @@
-import { Holiday, HolidaysData } from './holidays-data';
+import { Holiday, HolidaysData, Options } from './holidays-data';
 
-const holidays = new HolidaysData();
+let holidays = new HolidaysData();
 
 const dateFormat = (date: string | Date | number, fmt = 'yyyy-MM-dd') => {
   const d = new Date(date);
@@ -33,6 +33,13 @@ const getWeek = (date: string) => {
   return '星期' + ['日', '一', '二', '三', '四', '五', '六'][new Date(date).getDay()];
 };
 
+export const config = (option?: Options) => {
+  if (option?.onLine) {
+    holidays = new HolidaysData(option)
+  } else {
+    holidays.offOnLine()
+  }
+}
 export const getDayInfo = (date: string | Date | number) => {
   const d = dateFormat(date);
   const week = getWeek(d);
@@ -59,7 +66,6 @@ export const getDayInfo = (date: string | Date | number) => {
   result.ps = 'dayType：1-工作日；2-周末；3-法定节假日；4-补休调工日';
   return result;
 };
-
 export const isWorkingDay = (date: string | Date | number) => {
   const r = getDayInfo(date);
   return r.dayType === 1 || r.dayType === 4;

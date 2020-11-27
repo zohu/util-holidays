@@ -1,4 +1,4 @@
-import { getDayInfo, isWorkingDay, isWeekend, isStatutoryHoliday } from '../index';
+import { getDayInfo, isWorkingDay, isWeekend, isStatutoryHoliday, config } from '../index';
 test('2020-10-01信息', () => {
   expect(getDayInfo('2020-10-01')).toMatchObject({
     date: '2020-10-01',
@@ -37,4 +37,7 @@ test('2020-10-01是否法定假', () => {
 });
 test('2020-11-26是否法定假', () => {
   expect(isStatutoryHoliday('2020-11-26')).toBeFalsy();
+});
+test('config', () => {
+  expect(config());
 });
