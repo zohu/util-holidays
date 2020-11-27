@@ -1,7 +1,7 @@
-import { get } from 'superagent'
+import { get } from 'superagent';
 export interface Options {
-    onLine: boolean
-    key: string
+  onLine: boolean;
+  key: string;
 }
 export enum DayType {
   '工作日' = 1,
@@ -18,40 +18,42 @@ export interface Holiday {
   ps?: string;
 }
 export class HolidaysData {
-    holiday: Holiday[] = [];
-    key = ''
-    onLine = false
-    constructor(option?: Options) {
-        this.holiday = Holiday_2020_2021;
-        if (option?.onLine) {
-            this.onLine = option.onLine
-            this.key = option.key
-            this.checkData()
+  holiday: Holiday[] = [];
+  key = '';
+  onLine = false;
+  constructor(option?: Options) {
+    this.holiday = Holiday_2020_2021;
+    if (option?.onLine) {
+      this.onLine = option.onLine;
+      this.key = option.key;
+      this.checkData();
+    }
+  }
+  getDateInfo(date: string) {
+    if (this.onLine) {
+      this.checkData();
+    }
+    return this.holiday.find((o) => o.date === date);
+  }
+  checkData() {
+    const year = new Date().getFullYear() + '';
+    if (!this.holiday.some((o) => o.date.toString().includes(year))) {
+      this.getData();
+    }
+  }
+  getData() {
+    const url = `https://util-holidays.beituyun.com/v1/queryData?key=${this.key}`;
+    get(url)
+      .then((res) => {
+        if (res.body && res.body.flag === 1) {
+          this.holiday = res.body.data;
         }
-    }
-    getDateInfo(date: string) {
-        if (this.onLine) {
-            this.checkData()
-        }
-        return this.holiday.find((o) => o.date === date);
-    }
-    checkData() {
-        const year = new Date().getFullYear() + ''
-        if (!this.holiday.some(o => o.date.toString().includes(year))) {
-            this.getData()
-        }
-    }
-    getData(){
-        const url = `https://util-holidays.beituyun.com/v1/queryData?key=${this.key}`
-        get(url).then(res => {
-            if (res.body && res.body.flag === 1) {
-                this.holiday = res.body.data
-            }
-        }).catch(e => console.error(e))
-    }
-    offOnLine() {
-        this.onLine = false
-    }
+      })
+      .catch((e) => console.error(e));
+  }
+  offOnLine() {
+    this.onLine = false;
+  }
 }
 
 const Holiday_2020_2021 = [

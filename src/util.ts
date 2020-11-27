@@ -35,11 +35,11 @@ const getWeek = (date: string) => {
 
 export const config = (option?: Options) => {
   if (option?.onLine) {
-    holidays = new HolidaysData(option)
+    holidays = new HolidaysData(option);
   } else {
-    holidays.offOnLine()
+    holidays.offOnLine();
   }
-}
+};
 export const getDayInfo = (date: string | Date | number) => {
   const d = dateFormat(date);
   const week = getWeek(d);
