@@ -11,7 +11,7 @@ npm i util-holidays
 ```
 
 ### 支持离线、在线两种模式，支持typescript
-#### 离线模式
+#### 离线模式（已支持2021年）
 1. 因每年11月份左右公布下一年假期，所以离线模式需要每年更新版本，当前版本不属于当年时，会报错提示；
 ```javascript
 import { getDayInfo, isWorkingDay, isWeekend, isStatutoryHoliday } from 'util-holidays'
