@@ -2,6 +2,7 @@
 ![](https://img.shields.io/badge/Language-TypeScript-orange.svg)
 [![Build Status](https://travis-ci.com/oak-c/util-holidays.svg?branch=main)](https://travis-ci.com/oak-c/util-holidays)
 [![Coverage Status](https://coveralls.io/repos/github/oak-c/util-holidays/badge.svg)](https://coveralls.io/github/oak-c/util-holidays)
+[![](https://img.shields.io/npm/v/util-holidays.svg)](https://github.com/oak-c/util-holidays/releases)
 
 ### 安装
 ```bash
