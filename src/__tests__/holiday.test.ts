@@ -1,4 +1,5 @@
 import { getDayInfo, isWorkingDay, isWeekend, isStatutoryHoliday, config } from '../index';
+import { HolidaysData } from '../holidays-data'
 test('2020-10-01信息', () => {
   expect(getDayInfo('2020-10-01')).toMatchObject({
     date: '2020-10-01',
@@ -40,4 +41,9 @@ test('2020-11-26是否法定假', () => {
 });
 test('config', () => {
   expect(config());
+});
+test('HolidaysData', () => {
+  expect(new HolidaysData({onLine:true, key: '06907aecd7bd61bd1f21a94d5cfedbfc'}).getDateInfo('2021-11-11'));
+  expect(new HolidaysData({onLine:true, key: '06907aecd7bd61bd1f21a94d5cfedbfc'}).getData);
+  expect(new HolidaysData({onLine:true, key: '06907aecd7bd61bd1f21a94d5cfedbfc'}).offOnLine());
 });
