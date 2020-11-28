@@ -1,4 +1,4 @@
-import { getDayInfo, isWorkingDay, isWeekend, isStatutoryHoliday, config } from '../index';
+import { getDayInfo, isWorkingDay, isWeekend, isStatutoryHoliday, config, dateFormat } from '../index';
 import { HolidaysData } from '../holidays-data';
 test('2020-10-01信息', () => {
   expect(getDayInfo('2020-10-01')).toMatchObject({
@@ -39,11 +39,40 @@ test('2020-10-01是否法定假', () => {
 test('2020-11-26是否法定假', () => {
   expect(isStatutoryHoliday('2020-11-26')).toBeFalsy();
 });
-test('config', () => {
-  expect(config());
+test('The date is out of data.', () => {
+  try {
+    getDayInfo('2222-01-01')
+  } catch (error) {
+    expect(() => error.message === 'The date is out of data.').toBeTruthy()
+  };
+});
+test('Invalid date', () => {
+  try {
+    getDayInfo('Invalid')
+  } catch (error) {
+    expect(() => error.message === 'Invalid date: Invalid').toBeTruthy()
+  };
 });
 test('HolidaysData', () => {
-  expect(new HolidaysData({ onLine: true, key: '06907aecd7bd61bd1f21a94d5cfedbfc' }).getDateInfo('2021-11-11'));
-  expect(new HolidaysData({ onLine: true, key: '06907aecd7bd61bd1f21a94d5cfedbfc' }).getData);
+  expect(new HolidaysData({ onLine: true, key: '06907aecd7bd61bd1f21a94d5cfedbfc' }).getDateInfo('2222-11-11'));
   expect(new HolidaysData({ onLine: true, key: '06907aecd7bd61bd1f21a94d5cfedbfc' }).offOnLine());
 });
+test('getData', done => {
+  new HolidaysData({ onLine: true, key: '06907aecd7bd61bd1f21a94d5cfedbfc', url: 'http://127.0.0.1' }).getData(done)
+})
+test('getData', done => {
+  new HolidaysData({ onLine: true, key: '06907aecd7bd61bd1f21a94d5cfedbfc' }).getData(done)
+})
+test('getData', done => {
+  new HolidaysData({ onLine: true, key: '11' }).getData(done)
+})
+test('config', () => {
+  expect(config());
+  expect(config({onLine: false, key: ''}));
+  expect(config({onLine: true, key: ''}));
+});
+test('dateFormat', () => {
+  expect(dateFormat('2020-01-01 00:00:00:000', 'yyyy-MM-dd')).toBe('2020-01-01')
+  expect(dateFormat('2020-01-01 00:00:00:000', 'MM-dd')).toBe('01-01')
+  expect(dateFormat('2020-01-01 00:00:00:000', 'yyyy-MM-dd hh:mm:ss:S')).toBe('2020-01-01 00:00:00:0')
+})

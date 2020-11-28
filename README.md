@@ -11,13 +11,12 @@ npm i util-holidays
 # 或者 yarn add util-holidays
 ```
 
-### 支持离线、在线两种模式，支持typescript
+### 支持离线、在线两种模式，支持typescript，支持自定义api
 #### 离线模式（已支持2021年）
 1. 因每年11月份左右公布下一年假期，所以离线模式需要每年更新版本，当前版本不属于当年时，会报错提示；
 ```javascript
 import { getDayInfo, isWorkingDay, isWeekend, isStatutoryHoliday } from 'util-holidays'
-```
-```javascript
+
 // 获取日期信息
 getDayInfo('2020-10-01')
 // 返回值结构：
@@ -28,14 +27,16 @@ getDayInfo('2020-10-01')
     dayType: 3,
     ps: 'dayType：1-工作日；2-周末；3-法定节假日；4-补休调工日'
 }
-```
-```javascript
+
 // 判断是否工作日（含法定调工，如2020年10月10日）
 isWorkingDay('2020-10-10')
 // 判断是否正常休息的周末（不含法定调工，如2020年10月10日）
 isWeekend('2020-10-10')
 // 判断是否法定节假日
 isStatutoryHoliday('2020-10-01')
+
+// 格式化日期， fmt -> yyyy-MM-dd hh:mm:ss:S
+dateFormat: (date: string | number | Date, fmt?: string) => string
 ```
 
 #### 在线模式
@@ -52,6 +53,20 @@ config({
 ```
 4. 在线离线支持随时切换，您可指定某一时刻才联网更新，并且更新后可关闭在线模式；
 5. 其他用法同离线模式。
+6. 也支持链接自己的api，只要返回格式如下即可：
+```javascript
+import { config } from 'util-holidays'
+config({
+    onLine: true,
+    url: 'your api'
+})
+// api返回数据格式参考上面api的返回值：其中status代表是0调工还是1调休
+{
+    flag: 1,
+    data: [{ date: '2021-06-13', type: '端午节', status: 1 }],
+    message: 'string'
+}
+```
 
 ### 其他说明
 1. 另提供免费的开放接口供大家使用，API地址：https://util-holidays.beituyun.com/v1/

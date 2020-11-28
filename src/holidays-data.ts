@@ -1,7 +1,8 @@
 import { get } from 'superagent';
 export interface Options {
   onLine: boolean;
-  key: string;
+  key?: string;
+  url?: string
 }
 export enum DayType {
   '工作日' = 1,
@@ -20,38 +21,45 @@ export interface Holiday {
 export class HolidaysData {
   holiday: Holiday[] = [];
   key = '';
+  url = 'https://util-holidays.beituyun.com/v1/queryData'
   onLine = false;
   constructor(option?: Options) {
     this.holiday = Holiday_2020_2021;
     if (option?.onLine) {
       this.onLine = option.onLine;
-      this.key = option.key;
+      this.key = option.key || '';
+      this.url += `?key=${this.key}`
       this.checkData();
+    }
+    if (option?.url) {
+      this.url = option.url
     }
   }
   getDateInfo(date: string) {
-    this.checkData();
+    this.checkData(date);
     return this.holiday.find((o) => o.date === date);
   }
-  checkData() {
-    const year = new Date().getFullYear() + '';
+  checkData(date = new Date().getFullYear() + '-01-01') {
+    const year = new Date(date).getFullYear() + '';
     if (!this.holiday.some((o) => o.date.toString().includes(year))) {
       if (this.onLine) {
         this.getData();
       } else {
-        throw new Error('The data is out of date.')
+        throw new Error('The date is out of data.')
       }
     }
   }
-  getData() {
-    const url = `https://util-holidays.beituyun.com/v1/queryData?key=${this.key}`;
-    get(url)
+  getData(fn = () => {}) {
+    get(this.url)
       .then((res) => {
         if (res.body && res.body.flag === 1) {
-          this.holiday = res.body.data;
+          this.holiday = res.body.data
+        } else {
+          console.warn(res.body.message)
         }
       })
-      .catch((e) => console.error(e));
+      .catch((e) => console.error(e))
+      .finally(fn);
   }
   offOnLine() {
     this.onLine = false;

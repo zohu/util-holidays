@@ -2,7 +2,7 @@ import { Holiday, HolidaysData, Options } from './holidays-data';
 
 let holidays = new HolidaysData();
 
-const dateFormat = (date: string | Date | number, fmt = 'yyyy-MM-dd') => {
+export const dateFormat = (date: string | Date | number, fmt = 'yyyy-MM-dd') => {
   const d = new Date(date);
   if (!isValidDate(d)) {
     throw new Error('Invalid date: ' + date);
