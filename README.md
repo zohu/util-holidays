@@ -4,6 +4,15 @@
 [![Coverage Status](https://coveralls.io/repos/github/oak-c/util-holidays/badge.svg)](https://coveralls.io/github/oak-c/util-holidays)
 [![](https://img.shields.io/npm/v/util-holidays.svg)](https://www.npmjs.com/package/util-holidays)
 
+### 更新记录
+#### v1.0.3
+    - 增加支持自定义API
+    - 完善单元测试
+#### v1.0.2
+    - 增加2021离线数据
+#### v1.0.1
+    - 增加2020离线数据
+
 ### 安装
 ```bash
 # 安装
