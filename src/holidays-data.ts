@@ -27,12 +27,14 @@ export class HolidaysData {
     this.holiday = Holiday_2020_2021;
     if (option?.onLine) {
       this.onLine = option.onLine;
-      this.key = option.key || '';
-      this.url += `?key=${this.key}`;
       this.checkData();
     }
     if (option?.url) {
       this.url = option.url;
+    }
+    if (option?.key) {
+      this.key = option.key;
+      this.url += `?key=${this.key}`;
     }
   }
   getDateInfo(date: string) {
