@@ -30,15 +30,18 @@ export class HolidaysData {
     }
   }
   getDateInfo(date: string) {
-    if (this.onLine) {
-      this.checkData();
-    }
+    this.checkData();
     return this.holiday.find((o) => o.date === date);
   }
   checkData() {
     const year = new Date().getFullYear() + '';
     if (!this.holiday.some((o) => o.date.toString().includes(year))) {
-      this.getData();
+      if (this.onLine) {
+        this.getData();
+      } else {
+        throw new Error('The data is out of date.')
+      }
+      
     }
   }
   getData() {
