@@ -5,5 +5,5 @@ export default {
   isWorkingDay,
   isWeekend,
   isStatutoryHoliday,
-  dateFormat
+  dateFormat,
 };
