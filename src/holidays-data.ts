@@ -41,7 +41,6 @@ export class HolidaysData {
       } else {
         throw new Error('The data is out of date.')
       }
-      
     }
   }
   getData() {
