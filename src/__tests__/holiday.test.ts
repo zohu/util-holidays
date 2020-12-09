@@ -76,6 +76,13 @@ test('getData', (done) => {
     }).getData(done)
 })
 test('getData', (done) => {
+    new HolidaysData({
+        onLine: true,
+        key: '06907aecd7bd61bd1f21a94d5cfedbfc',
+        url: 'https://util.beituyun.com/v1/holidays',
+    }).getData(done)
+})
+test('getData', (done) => {
     new HolidaysData({ onLine: true, key: '06907aecd7bd61bd1f21a94d5cfedbfc' }).getData(done)
 })
 test('getData', (done) => {
