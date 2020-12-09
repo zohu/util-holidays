@@ -1,5 +1,16 @@
 {
-  "printWidth": 120,
-  "trailingComma": "all",
-  "singleQuote": true
+  "arrowParens": "always",
+  "bracketSpacing": true,
+  "eslintIntegration": true,
+  "jsxBracketSameLine": true,
+  "jsxSingleQuote": false,
+  "printWidth": 100,
+  "semi": false,
+  "singleQuote": true,
+  "stylelintIntegration": false,
+  "tabWidth": 4,
+  "TrailingCooma": "es5",
+  "tslintIntegration": false,
+  "useTabs": false,
+  "endOfLine": "lf"
 }
