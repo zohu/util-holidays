@@ -21,7 +21,7 @@ export interface Holiday {
 export class HolidaysData {
     holiday: Holiday[] = []
     key = ''
-    url = 'https://util-holidays.beituyun.com/v1/queryData'
+    url = 'https://util.beituyun.com/v1/holidays/queryData'
     onLine = false
     constructor(option?: Options) {
         this.holiday = Holiday_2020_2021
